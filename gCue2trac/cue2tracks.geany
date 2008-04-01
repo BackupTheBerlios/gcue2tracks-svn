@@ -1,0 +1,13 @@
+
+[project]
+name=cue2tracks
+base_path=/home/test/Desktop/Cue
+make_in_base_path=false
+description=
+run_cmd=
+
+[files]
+current_page=2
+FILE_NAME_0=3608;7;0;16;1;1;0;/home/test/Desktop/Cue/cooc;
+FILE_NAME_1=2853;10;0;16;1;1;0;/usr/local/bin/cue2tracks;
+FILE_NAME_2=2578;7;0;16;1;1;0;/home/test/Desktop/Cue/cue2tracks.py;
