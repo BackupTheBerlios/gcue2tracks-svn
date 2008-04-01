@@ -8,7 +8,6 @@ import Queue
 import popen2
 import string
 
-
 def puls1():
 	a=GuiPart.wTree.get_widget("progressbar1")	
 	if ThreadedClient.a==1:
@@ -19,6 +18,16 @@ def puls1():
 		
 def puls():
 	puls1()
+
+def bitratebtn (widget):
+	GuiPart.wTree.get_widget("VBR").set_sensitive(True)
+	GuiPart.wTree.get_widget("bitrate").set_sensitive(True)
+	GuiPart.wTree.get_widget("quality").set_sensitive(False)
+	
+def qualitybtn (widget):
+	GuiPart.wTree.get_widget("VBR").set_sensitive(False)	
+	GuiPart.wTree.get_widget("bitrate").set_sensitive(False)
+	GuiPart.wTree.get_widget("quality").set_sensitive(True)
 		
 class aJob:
 
@@ -39,7 +48,8 @@ class GuiPart:
 		iter=combobox.set_active(0)	
 		dic = {"on_mainWindow_destroy" : self.endApplication
 				, "onf" : self.onf, "start_recomp" : self.start_recomp
-				,"bsave" : self.bsave,"stop" : self.stop,"vbr" : self.vbr,"codec_changed" : self.codec_changed}
+				,"bsave" : self.bsave,"stop" : self.stop,"codec_changed" : self.codec_changed
+				,"bitratebtn" : bitratebtn,"qualitybtn" : qualitybtn}
 		GuiPart.wTree.signal_autoconnect(dic)
 		bitrait = GuiPart.wTree.get_widget("bitrate")
 		store = gtk.ListStore(str)
@@ -54,20 +64,20 @@ class GuiPart:
 	def codec_changed(self, widget):
 		codecn1 = GuiPart.wTree.get_widget("codec")
 		codecn=codecn1.get_active()
-		print codecn
 		if codecn<=1:
-			GuiPart.wTree.get_widget("VBR",).set_sensitive(True)
+			GuiPart.wTree.get_widget("VBR").set_sensitive(True)
 			GuiPart.wTree.get_widget("quality").set_sensitive(True)
 			GuiPart.wTree.get_widget("bitrate").set_sensitive(True)
+			GuiPart.wTree.get_widget("bitratebtn").set_sensitive(True)
+			GuiPart.wTree.get_widget("qualitybtn").set_sensitive(True)
+			GuiPart.wTree.get_widget("bitratebtn").set_active(True)
+			bitratebtn (widget)
 		else :
 			GuiPart.wTree.get_widget("VBR").set_sensitive(False)
 			GuiPart.wTree.get_widget("quality").set_sensitive(False)
 			GuiPart.wTree.get_widget("bitrate").set_sensitive(False)
-
-	def vbr(self, widget):
-		vbr=GuiPart.wTree.get_widget("VBR")
-		a=vbr.get_active()
-		print a
+			GuiPart.wTree.get_widget("bitratebtn").set_sensitive(False)
+			GuiPart.wTree.get_widget("qualitybtn").set_sensitive(False)
 
 	def onf(self, widget):
 		dialog = gtk.FileChooserDialog("Open..",
@@ -118,7 +128,15 @@ class GuiPart:
 		folder = entry.get_text() ## folder to save
 		combobox = GuiPart.wTree.get_widget("codec")
 		codec=combobox.get_active_text()
-		GuiPart.a=unicode('cue2tracks -c ' + codec + ' -B 256 -M C -Q0 -f cp1251 -R -o '+'"'+folder+ '/%P/%D - %A/%t" '+ '"' + GuiPart.fileselect + '"')
+		if GuiPart.wTree.get_widget("VBR").get_active():
+			mode = " -M -V"
+		else:
+			mode = " -M -C"
+		print mode
+		bitrate =" -B " + GuiPart.wTree.get_widget("bitrate").child.get_text()
+		print bitrate
+		
+		GuiPart.a=unicode('cue2tracks -c ' + codec + bitrate + mode +' -Q7 -f cp1251 -R -o '+'"'+folder+ '/%P/%D - %A/%t" '+ '"' + GuiPart.fileselect + '"')
 		print GuiPart.a
 		GuiPart.textview = GuiPart.wTree.get_widget("textview1")
 		GuiPart.textbuffer=GuiPart.textview.get_buffer()
