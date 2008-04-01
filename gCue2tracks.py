@@ -65,19 +65,13 @@ class GuiPart:
 		codecn1 = GuiPart.wTree.get_widget("codec")
 		codecn=codecn1.get_active()
 		if codecn<=1:
-			GuiPart.wTree.get_widget("VBR").set_sensitive(True)
-			GuiPart.wTree.get_widget("quality").set_sensitive(True)
-			GuiPart.wTree.get_widget("bitrate").set_sensitive(True)
-			GuiPart.wTree.get_widget("bitratebtn").set_sensitive(True)
-			GuiPart.wTree.get_widget("qualitybtn").set_sensitive(True)
-			GuiPart.wTree.get_widget("bitratebtn").set_active(True)
+			GuiPart.wTree.get_widget("hbox1").set_sensitive(True)
+			GuiPart.wTree.get_widget("hbox2").set_sensitive(True)
 			bitratebtn (widget)
+			GuiPart.wTree.get_widget("bitratebtn").set_active(True)
 		else :
-			GuiPart.wTree.get_widget("VBR").set_sensitive(False)
-			GuiPart.wTree.get_widget("quality").set_sensitive(False)
-			GuiPart.wTree.get_widget("bitrate").set_sensitive(False)
-			GuiPart.wTree.get_widget("bitratebtn").set_sensitive(False)
-			GuiPart.wTree.get_widget("qualitybtn").set_sensitive(False)
+			GuiPart.wTree.get_widget("hbox1").set_sensitive(False)
+			GuiPart.wTree.get_widget("hbox2").set_sensitive(False)
 
 	def onf(self, widget):
 		dialog = gtk.FileChooserDialog("Open..",
