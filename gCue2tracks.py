@@ -62,9 +62,8 @@ class GuiPart:
 		bitrait.set_active(0)
 		
 	def codec_changed(self, widget):
-		codecn1 = GuiPart.wTree.get_widget("codec")
-		codecn=codecn1.get_active()
-		if codecn<=1:
+		codecn = GuiPart.wTree.get_widget("codec").get_active()
+		if codecn in [0,1]:
 			GuiPart.wTree.get_widget("hbox1").set_sensitive(True)
 			GuiPart.wTree.get_widget("hbox2").set_sensitive(True)
 			bitratebtn (widget)
@@ -116,18 +115,28 @@ class GuiPart:
 		fileselect= ' "' + GuiPart.wTree.get_widget("filename").get_text() + '"'  ## filename
 		folder = ' -o "' + GuiPart.wTree.get_widget("savefolder").get_text()      ## folder to save
 		codec = GuiPart.wTree.get_widget("codec").get_active_text()
-		if GuiPart.wTree.get_widget("VBR").get_active():
-			mode = " -M -V"
+		if codec in ['ogg','mp3']:
+			self.getvar()
 		else:
-			mode = " -M -C"
-		bitrate =" -B " + GuiPart.wTree.get_widget("bitrate").child.get_text()
-		quality = ' -Q' + GuiPart.wTree.get_widget("quality").get_text ()
+			self.bitrate = self.mode = self.quality = ''
 		codepage = ' -f cp1251'
 		test = ' -R'
-		GuiPart.a=unicode('cue2tracks -c ' + codec + bitrate + mode + quality 
+		GuiPart.a=unicode('cue2tracks -c ' + codec + self.bitrate + self.mode + self.quality 
 							+ codepage + test + folder + '/%P/%D - %A/%t"'+ fileselect)
 		print GuiPart.a ######################
 		self.goButton_clicked(widget)
+		
+	def getvar(self):
+		if GuiPart.wTree.get_widget("bitratebtn").get_active():
+			if GuiPart.wTree.get_widget("VBR").get_active():
+				self.mode = " -M -V"
+			else:
+				self.mode = " -M -C"
+			self.bitrate =" -B " + GuiPart.wTree.get_widget("bitrate").child.get_text()
+			self.quality =''
+		else:
+			self.quality = ' -Q' + GuiPart.wTree.get_widget("quality").get_text ()
+			self.bitrate =self.mode =''
 
 	def goButton_clicked(self,widget):
 		id=self.jobCounter
@@ -136,13 +145,14 @@ class GuiPart:
 		self.qIn.put(job)
 		
 	def stop(self,widget):
-		popen2.Popen4('killall cue2tracks')
+		popen2.Popen3('killall -Iq cue2tracks 2>&1')
+		return
 
 	def quitButton_clicked(self,widget):
 		self.endApplication()
 
 	def endApplication(self,widget):
-		popen2.Popen4('killall cue2tracks')
+		popen2.Popen4('killall -q cue2tracks')
 		print "time to die"
 		gtk.main_quit()
 
