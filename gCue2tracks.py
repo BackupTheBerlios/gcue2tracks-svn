@@ -91,12 +91,10 @@ class GuiPart:
 		dialog.add_filter(filter)
 		response = dialog.run()
 		if response == gtk.RESPONSE_OK:
-			self.entry1 = GuiPart.wTree.get_widget("filename")
-			self.entry1.set_text(dialog.get_filename())
-			self.entry = GuiPart.wTree.get_widget("savefolder")
-			self.entry.set_text(dialog.get_current_folder())
-			self.start = GuiPart.wTree.get_widget("start")
-			self.start.set_sensitive(True)
+			GuiPart.wTree.get_widget("filename").set_text(dialog.get_filename())
+			if GuiPart.wTree.get_widget("savefolder").get_text()=='':
+				GuiPart.wTree.get_widget("savefolder").set_text(dialog.get_current_folder())
+			GuiPart.wTree.get_widget("start").set_sensitive(True)
 		elif response == gtk.RESPONSE_CANCEL:
 		   print "Closed, no files selected"	
 		dialog.destroy()
@@ -105,8 +103,7 @@ class GuiPart:
 		def dialogdestroy(widget):
 			dialog.destroy()
 		def bsaveok(widget):
-			entry = GuiPart.wTree.get_widget("savefolder")
-			entry.set_text(dialog.get_filename())
+			GuiPart.wTree.get_widget("savefolder").set_text(dialog.get_filename())
 			dialog.destroy()
 		Tree = gtk.glade.XML("gCue2tracks.glade", "filechooserdialog1")
 		dic = {"bsave_cancel" : dialogdestroy, "bsave_ok" : bsaveok,}
@@ -116,24 +113,20 @@ class GuiPart:
 		
 										
 	def start_recomp(self, widget):
-		self.entry1 = GuiPart.wTree.get_widget("filename")## filename
-		GuiPart.fileselect= self.entry1.get_text()
-		entry = GuiPart.wTree.get_widget("savefolder")
-		folder = entry.get_text() ## folder to save
-		combobox = GuiPart.wTree.get_widget("codec")
-		codec=combobox.get_active_text()
+		fileselect= ' "' + GuiPart.wTree.get_widget("filename").get_text() + '"'  ## filename
+		folder = ' -o "' + GuiPart.wTree.get_widget("savefolder").get_text()      ## folder to save
+		codec = GuiPart.wTree.get_widget("codec").get_active_text()
 		if GuiPart.wTree.get_widget("VBR").get_active():
 			mode = " -M -V"
 		else:
 			mode = " -M -C"
-		print mode
 		bitrate =" -B " + GuiPart.wTree.get_widget("bitrate").child.get_text()
-		print bitrate
-		
-		GuiPart.a=unicode('cue2tracks -c ' + codec + bitrate + mode +' -Q7 -f cp1251 -R -o '+'"'+folder+ '/%P/%D - %A/%t" '+ '"' + GuiPart.fileselect + '"')
-		print GuiPart.a
-		GuiPart.textview = GuiPart.wTree.get_widget("textview1")
-		GuiPart.textbuffer=GuiPart.textview.get_buffer()
+		quality = ' -Q' + GuiPart.wTree.get_widget("quality").get_text ()
+		codepage = ' -f cp1251'
+		test = ' -R'
+		GuiPart.a=unicode('cue2tracks -c ' + codec + bitrate + mode + quality 
+							+ codepage + test + folder + '/%P/%D - %A/%t"'+ fileselect)
+		print GuiPart.a ######################
 		self.goButton_clicked(widget)
 
 	def goButton_clicked(self,widget):
@@ -165,42 +158,44 @@ class ThreadedClient:
         self.incomingThread.start()
         gtk.main()
         self.running=False
-		
+        
     def processIncoming(self):
-       while self.running:
-           while self.qIn.qsize():
-               try:
-                   job=self.qIn.get(0)
-                   ThreadedClient.a=1
-                   self.gui.currentJobId=job.id
-                   threading.Thread(target=puls).start()
-                   proc1 = popen2.Popen4(GuiPart.a)
-                   gtk.gdk.threads_enter()
-                   fromchild = proc1.fromchild.readline()
-                   gtk.gdk.threads_leave()
-                   while fromchild:
-                   	   fromchild = proc1.fromchild.readline()
-                   	   a=string.find(fromchild,'%')
-                   	   if a<>-1:
-                   	   	fromchild = fromchild[:(a-3)]
-                   	   print fromchild
-                   	   gtk.gdk.threads_enter()
-                   	   buff=GuiPart.textbuffer.get_text(GuiPart.textbuffer.get_start_iter(),\
-                   	   GuiPart.textbuffer.get_end_iter())                  	   
-                   	   GuiPart.textbuffer.set_text( buff+fromchild+ '\n')
-                   	   match_start_mark = GuiPart.textbuffer.create_mark('match_start',\
-                   	   GuiPart.textbuffer.get_end_iter(), True)
-                   	   GuiPart.textview.scroll_to_mark(match_start_mark, 0, True)
-                   	   gtk.gdk.threads_leave()	
-                   job.result=' '
-                   ThreadedClient.a=2
-                   self.gui.currentJobId=None
-                   self.qOut.put(job)
-               except Queue.Empty:
-                   pass  
-
-    def endApplication(self):
-        self.running=False
+        GuiPart.textview = GuiPart.wTree.get_widget("textview1")
+        GuiPart.textbuffer=GuiPart.textview.get_buffer()
+        while self.running:
+                while self.qIn.qsize():
+                    try:
+                        job=self.qIn.get(0)
+                        ThreadedClient.a=1
+                        self.gui.currentJobId=job.id
+                        threading.Thread(target=puls).start()
+                        proc1 = popen2.Popen4(GuiPart.a)
+                        gtk.gdk.threads_enter()
+                        fromchild = proc1.fromchild.readline()
+                        gtk.gdk.threads_leave()
+                        while fromchild:
+                            fromchild = proc1.fromchild.readline()
+                            a=string.find(fromchild,'%')
+                            if a<>-1:
+                                fromchild = fromchild[:(a-3)]
+                            print fromchild
+                            gtk.gdk.threads_enter()
+                            buff=GuiPart.textbuffer.get_text(GuiPart.textbuffer.get_start_iter(),\
+                            GuiPart.textbuffer.get_end_iter())                  	   
+                            GuiPart.textbuffer.set_text( buff+fromchild+ '\n')
+                            match_start_mark = GuiPart.textbuffer.create_mark('match_start',\
+                            GuiPart.textbuffer.get_end_iter(), True)
+                            GuiPart.textview.scroll_to_mark(match_start_mark, 0, True)
+                            gtk.gdk.threads_leave()	
+                        job.result=' '
+                        ThreadedClient.a=2
+                        self.gui.currentJobId=None
+                        self.qOut.put(job)
+                    except Queue.Empty:
+                       pass  
+    
+    #def endApplication(self):
+        #self.running=False
 
 plop=ThreadedClient()
 
