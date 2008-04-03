@@ -213,24 +213,52 @@
                 <property name="n_columns">3</property>
                 <property name="column_spacing">1</property>
                 <child>
-                  <widget class="GtkButton" id="buttonsave">
+                  <widget class="GtkEntry" id="savefolder">
                     <property name="visible">True</property>
-                    <property name="receives_default">True</property>
-                    <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK</property>
-                    <property name="tooltip" translatable="yes">folder to save</property>
-                    <property name="label" translatable="yes">gtk-save</property>
-                    <property name="use_stock">True</property>
-                    <property name="response_id">0</property>
-                    <signal name="clicked" handler="bsave"/>
+                    <property name="can_focus">True</property>
+                    <property name="events">GDK_POINTER_MOTION_MASK | GDK_BUTTON_PRESS_MASK</property>
                   </widget>
                   <packing>
-                    <property name="left_attach">2</property>
-                    <property name="right_attach">3</property>
+                    <property name="left_attach">1</property>
+                    <property name="right_attach">2</property>
                     <property name="top_attach">1</property>
                     <property name="bottom_attach">2</property>
-                    <property name="x_options">GTK_FILL</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkEntry" id="filename">
+                    <property name="visible">True</property>
+                    <property name="can_focus">True</property>
+                    <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                  </widget>
+                  <packing>
+                    <property name="left_attach">1</property>
+                    <property name="right_attach">2</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkLabel" id="label2">
+                    <property name="visible">True</property>
+                    <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                    <property name="label" translatable="yes">cue file</property>
+                    <property name="justify">GTK_JUSTIFY_CENTER</property>
+                  </widget>
+                  <packing>
+                    <property name="x_options">GTK_EXPAND</property>
                     <property name="y_options">GTK_FILL</property>
-                    <property name="x_padding">17</property>
+                  </packing>
+                </child>
+                <child>
+                  <widget class="GtkLabel" id="label3">
+                    <property name="visible">True</property>
+                    <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                    <property name="label" translatable="yes">save to:</property>
+                    <property name="justify">GTK_JUSTIFY_CENTER</property>
+                  </widget>
+                  <packing>
+                    <property name="top_attach">1</property>
+                    <property name="bottom_attach">2</property>
+                    <property name="x_options">GTK_EXPAND</property>
                   </packing>
                 </child>
                 <child>
@@ -254,52 +282,24 @@
                   </packing>
                 </child>
                 <child>
-                  <widget class="GtkLabel" id="label3">
+                  <widget class="GtkButton" id="buttonsave">
                     <property name="visible">True</property>
-                    <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                    <property name="label" translatable="yes">save to:</property>
-                    <property name="justify">GTK_JUSTIFY_CENTER</property>
+                    <property name="receives_default">True</property>
+                    <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK</property>
+                    <property name="tooltip" translatable="yes">folder to save</property>
+                    <property name="label" translatable="yes">gtk-save</property>
+                    <property name="use_stock">True</property>
+                    <property name="response_id">0</property>
+                    <signal name="clicked" handler="bsave"/>
                   </widget>
                   <packing>
+                    <property name="left_attach">2</property>
+                    <property name="right_attach">3</property>
                     <property name="top_attach">1</property>
                     <property name="bottom_attach">2</property>
-                    <property name="x_options">GTK_EXPAND</property>
-                  </packing>
-                </child>
-                <child>
-                  <widget class="GtkLabel" id="label2">
-                    <property name="visible">True</property>
-                    <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                    <property name="label" translatable="yes">cue file</property>
-                    <property name="justify">GTK_JUSTIFY_CENTER</property>
-                  </widget>
-                  <packing>
-                    <property name="x_options">GTK_EXPAND</property>
+                    <property name="x_options">GTK_FILL</property>
                     <property name="y_options">GTK_FILL</property>
-                  </packing>
-                </child>
-                <child>
-                  <widget class="GtkEntry" id="filename">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                  </widget>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="right_attach">2</property>
-                  </packing>
-                </child>
-                <child>
-                  <widget class="GtkEntry" id="savefolder">
-                    <property name="visible">True</property>
-                    <property name="can_focus">True</property>
-                    <property name="events">GDK_POINTER_MOTION_MASK | GDK_BUTTON_PRESS_MASK</property>
-                  </widget>
-                  <packing>
-                    <property name="left_attach">1</property>
-                    <property name="right_attach">2</property>
-                    <property name="top_attach">1</property>
-                    <property name="bottom_attach">2</property>
+                    <property name="x_padding">17</property>
                   </packing>
                 </child>
               </widget>
@@ -337,36 +337,149 @@
                     <property name="visible">True</property>
                     <property name="n_rows">2</property>
                     <property name="n_columns">2</property>
-                    <property name="column_spacing">4</property>
+                    <property name="column_spacing">6</property>
                     <child>
-                      <placeholder/>
-                    </child>
-                    <child>
-                      <widget class="GtkComboBox" id="codec">
+                      <widget class="GtkFrame" id="frame1">
                         <property name="visible">True</property>
-                        <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
-                        <property name="tooltip" translatable="yes">ogg  : ogg vorbis
-mp3 : mpeg 1 layer 3 via lame
-flac : Free Lossless Audio Codec
-wav : no encode, raw sound wave
-flake: FLAC realisation via FFmpeg (beta)
-ape : Monkey's Audio Codec,
-wv   : WavPack,
-ofr   : OptimFrog,
-shn  : shorten</property>
-                        <property name="has_frame">False</property>
-                        <property name="items" translatable="yes">ogg
-mp3
-flac
-wav
-flake
-ape
-wv
-ofr
-shn</property>
-                        <signal name="changed" handler="codec_changed"/>
+                        <property name="label_xalign">0</property>
+                        <child>
+                          <widget class="GtkHBox" id="hbox3">
+                            <property name="height_request">26</property>
+                            <property name="visible">True</property>
+                            <child>
+                              <widget class="GtkRadioButton" id="best">
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="has_tooltip">True</property>
+                                <property name="tooltip_text">Slow processing but high compression level</property>
+                                <property name="label" translatable="yes">best</property>
+                                <property name="response_id">0</property>
+                                <property name="active">True</property>
+                                <property name="draw_indicator">True</property>
+                              </widget>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">False</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <widget class="GtkRadioButton" id="fast">
+                                <property name="visible">True</property>
+                                <property name="can_focus">True</property>
+                                <property name="has_tooltip">True</property>
+                                <property name="tooltip" translatable="yes">Fast processing but low compression level</property>
+                                <property name="label" translatable="yes">fast</property>
+                                <property name="response_id">0</property>
+                                <property name="active">True</property>
+                                <property name="draw_indicator">True</property>
+                                <property name="group">best</property>
+                              </widget>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">False</property>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkLabel" id="label8">
+                            <property name="visible">True</property>
+                            <property name="label" translatable="yes">&lt;b&gt;&lt;/b&gt;</property>
+                            <property name="use_markup">True</property>
+                          </widget>
+                          <packing>
+                            <property name="type">label_item</property>
+                          </packing>
+                        </child>
                       </widget>
                       <packing>
+                        <property name="top_attach">1</property>
+                        <property name="bottom_attach">2</property>
+                        <property name="x_options"></property>
+                        <property name="y_options"></property>
+                      </packing>
+                    </child>
+                    <child>
+                      <widget class="GtkFrame" id="frame4">
+                        <property name="visible">True</property>
+                        <property name="label_xalign">0</property>
+                        <child>
+                          <widget class="GtkHBox" id="hbox1">
+                            <property name="visible">True</property>
+                            <child>
+                              <widget class="GtkRadioButton" id="bitratebtn">
+                                <property name="visible">True</property>
+                                <property name="label" translatable="yes">Bitrate</property>
+                                <property name="response_id">0</property>
+                                <property name="active">True</property>
+                                <property name="draw_indicator">True</property>
+                                <signal name="toggled" handler="bitratebtn"/>
+                              </widget>
+                            </child>
+                            <child>
+                              <widget class="GtkComboBoxEntry" id="bitrate">
+                                <property name="width_request">60</property>
+                                <property name="visible">True</property>
+                                <property name="has_tooltip">True</property>
+                                <property name="tooltip" translatable="yes">Set compression bitrate in kbps </property>
+                                <child internal-child="entry">
+                                  <widget class="GtkEntry" id="comboboxentry-entry1">
+                                    <property name="visible">True</property>
+                                    <property name="can_focus">True</property>
+                                    <property name="has_tooltip">True</property>
+                                    <property name="tooltip" translatable="yes">Set compression bitrate in kbps </property>
+                                    <property name="max_length">3</property>
+                                  </widget>
+                                </child>
+                              </widget>
+                              <packing>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <widget class="GtkLabel" id="label6">
+                                <property name="visible">True</property>
+                                <property name="events">GDK_BUTTON_PRESS_MASK | GDK_STRUCTURE_MASK</property>
+                                <property name="label" translatable="yes">Mode:</property>
+                                <property name="justify">GTK_JUSTIFY_RIGHT</property>
+                              </widget>
+                              <packing>
+                                <property name="position">2</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <widget class="GtkCheckButton" id="VBR">
+                                <property name="visible">True</property>
+                                <property name="tooltip" translatable="yes">Variable compression bitrate</property>
+                                <property name="label" translatable="yes">VBR</property>
+                                <property name="focus_on_click">False</property>
+                                <property name="xalign">0</property>
+                                <property name="response_id">0</property>
+                                <property name="active">True</property>
+                                <property name="draw_indicator">True</property>
+                                <signal name="toggled" handler="vbr"/>
+                              </widget>
+                              <packing>
+                                <property name="position">3</property>
+                              </packing>
+                            </child>
+                          </widget>
+                        </child>
+                        <child>
+                          <widget class="GtkLabel" id="label6">
+                            <property name="visible">True</property>
+                            <property name="label" translatable="yes">&lt;b&gt;&lt;/b&gt;</property>
+                            <property name="use_markup">True</property>
+                          </widget>
+                          <packing>
+                            <property name="type">label_item</property>
+                          </packing>
+                        </child>
+                      </widget>
+                      <packing>
+                        <property name="left_attach">1</property>
+                        <property name="right_attach">2</property>
                         <property name="x_options"></property>
                         <property name="y_options"></property>
                       </packing>
@@ -432,83 +545,33 @@ shn</property>
                       </packing>
                     </child>
                     <child>
-                      <widget class="GtkFrame" id="frame4">
+                      <widget class="GtkComboBox" id="codec">
                         <property name="visible">True</property>
-                        <property name="label_xalign">0</property>
-                        <child>
-                          <widget class="GtkHBox" id="hbox1">
-                            <property name="visible">True</property>
-                            <child>
-                              <widget class="GtkRadioButton" id="bitratebtn">
-                                <property name="visible">True</property>
-                                <property name="label" translatable="yes">Bitrate</property>
-                                <property name="response_id">0</property>
-                                <property name="active">True</property>
-                                <property name="draw_indicator">True</property>
-                                <signal name="toggled" handler="bitratebtn"/>
-                              </widget>
-                            </child>
-                            <child>
-                              <widget class="GtkComboBoxEntry" id="bitrate">
-                                <property name="width_request">60</property>
-                                <property name="visible">True</property>
-                                <property name="tooltip" translatable="yes">Set compression bitrate in kbps </property>
-                                <child internal-child="entry">
-                                  <widget class="GtkEntry" id="comboboxentry-entry1">
-                                    <property name="visible">True</property>
-                                    <property name="can_focus">True</property>
-                                    <property name="max_length">3</property>
-                                  </widget>
-                                </child>
-                              </widget>
-                              <packing>
-                                <property name="position">1</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <widget class="GtkLabel" id="label6">
-                                <property name="visible">True</property>
-                                <property name="events">GDK_BUTTON_PRESS_MASK | GDK_STRUCTURE_MASK</property>
-                                <property name="label" translatable="yes">Mode:</property>
-                                <property name="justify">GTK_JUSTIFY_RIGHT</property>
-                              </widget>
-                              <packing>
-                                <property name="position">2</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <widget class="GtkCheckButton" id="VBR">
-                                <property name="visible">True</property>
-                                <property name="tooltip" translatable="yes">Variable compression bitrate</property>
-                                <property name="label" translatable="yes">VBR</property>
-                                <property name="focus_on_click">False</property>
-                                <property name="xalign">0</property>
-                                <property name="response_id">0</property>
-                                <property name="active">True</property>
-                                <property name="draw_indicator">True</property>
-                                <signal name="toggled" handler="vbr"/>
-                              </widget>
-                              <packing>
-                                <property name="position">3</property>
-                              </packing>
-                            </child>
-                          </widget>
-                        </child>
-                        <child>
-                          <widget class="GtkLabel" id="label6">
-                            <property name="visible">True</property>
-                            <property name="label" translatable="yes">&lt;b&gt;&lt;/b&gt;</property>
-                            <property name="use_markup">True</property>
-                          </widget>
-                          <packing>
-                            <property name="type">label_item</property>
-                          </packing>
-                        </child>
+                        <property name="events">GDK_POINTER_MOTION_MASK | GDK_POINTER_MOTION_HINT_MASK | GDK_BUTTON_PRESS_MASK | GDK_BUTTON_RELEASE_MASK</property>
+                        <property name="tooltip" translatable="yes">ogg  : ogg vorbis
+mp3 : mpeg 1 layer 3 via lame
+flac : Free Lossless Audio Codec
+wav : no encode, raw sound wave
+flake: FLAC realisation via FFmpeg (beta)
+ape : Monkey's Audio Codec,
+wv   : WavPack,
+ofr   : OptimFrog,
+shn  : shorten</property>
+                        <property name="has_frame">False</property>
+                        <property name="focus_on_click">False</property>
+                        <property name="items" translatable="yes">ogg
+mp3
+flac
+wav
+flake
+ape
+wv
+ofr
+shn</property>
+                        <signal name="changed" handler="codec_changed"/>
                       </widget>
                       <packing>
-                        <property name="left_attach">1</property>
-                        <property name="right_attach">2</property>
-                        <property name="x_options"></property>
+                        <property name="x_options">GTK_FILL</property>
                         <property name="y_options"></property>
                       </packing>
                     </child>
@@ -566,17 +629,6 @@ shn</property>
                     <property name="n_rows">1</property>
                     <property name="n_columns">2</property>
                     <child>
-                      <widget class="GtkButton" id="button4">
-                        <property name="visible">True</property>
-                        <property name="can_focus">True</property>
-                        <property name="receives_default">True</property>
-                        <property name="label" translatable="yes">gtk-stop</property>
-                        <property name="use_stock">True</property>
-                        <property name="response_id">0</property>
-                        <signal name="clicked" handler="stop"/>
-                      </widget>
-                    </child>
-                    <child>
                       <widget class="GtkButton" id="start">
                         <property name="visible">True</property>
                         <property name="sensitive">False</property>
@@ -591,6 +643,17 @@ shn</property>
                         <property name="left_attach">1</property>
                         <property name="right_attach">2</property>
                       </packing>
+                    </child>
+                    <child>
+                      <widget class="GtkButton" id="button4">
+                        <property name="visible">True</property>
+                        <property name="can_focus">True</property>
+                        <property name="receives_default">True</property>
+                        <property name="label" translatable="yes">gtk-stop</property>
+                        <property name="use_stock">True</property>
+                        <property name="response_id">0</property>
+                        <signal name="clicked" handler="stop"/>
+                      </widget>
                     </child>
                   </widget>
                 </child>

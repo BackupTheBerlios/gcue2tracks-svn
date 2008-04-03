@@ -114,6 +114,7 @@ class GuiPart:
 	def start_recomp(self, widget):
 		fileselect= ' "' + GuiPart.wTree.get_widget("filename").get_text() + '"'  ## filename
 		folder = ' -o "' + GuiPart.wTree.get_widget("savefolder").get_text()      ## folder to save
+		level = ' -l best'
 		codec = GuiPart.wTree.get_widget("codec").get_active_text()
 		if codec in ['ogg','mp3']:
 			self.getvar()
@@ -121,7 +122,7 @@ class GuiPart:
 			self.bitrate = self.mode = self.quality = ''
 		codepage = ' -f cp1251'
 		test = ' -R'
-		GuiPart.a=unicode('cue2tracks -c ' + codec + self.bitrate + self.mode + self.quality 
+		GuiPart.a=unicode('cue2tracks -c ' + codec + level + self.bitrate + self.mode + self.quality 
 							+ codepage + test + folder + '/%P/%D - %A/%t"'+ fileselect)
 		print GuiPart.a ######################
 		self.goButton_clicked(widget)
@@ -145,7 +146,8 @@ class GuiPart:
 		self.qIn.put(job)
 		
 	def stop(self,widget):
-		popen2.Popen3('killall -Iq cue2tracks 2>&1')
+		ThreadedClient.a=0
+		popen2.Popen3('killall -Iq cue2tracks')
 		return
 
 	def quitButton_clicked(self,widget):
@@ -170,6 +172,7 @@ class ThreadedClient:
         self.running=False
         
     def processIncoming(self):
+
         GuiPart.textview = GuiPart.wTree.get_widget("textview1")
         GuiPart.textbuffer=GuiPart.textview.get_buffer()
         while self.running:
@@ -183,7 +186,7 @@ class ThreadedClient:
                         gtk.gdk.threads_enter()
                         fromchild = proc1.fromchild.readline()
                         gtk.gdk.threads_leave()
-                        while fromchild:
+                        while proc1.poll()==-1:
                             fromchild = proc1.fromchild.readline()
                             a=string.find(fromchild,'%')
                             if a<>-1:
@@ -196,15 +199,16 @@ class ThreadedClient:
                             match_start_mark = GuiPart.textbuffer.create_mark('match_start',\
                             GuiPart.textbuffer.get_end_iter(), True)
                             GuiPart.textview.scroll_to_mark(match_start_mark, 0, True)
-                            gtk.gdk.threads_leave()	
+                            gtk.gdk.threads_leave()
+            #                print proc1.pid
+                        ThreadedClient.a=0	
                         job.result=' '
-                        ThreadedClient.a=2
                         self.gui.currentJobId=None
                         self.qOut.put(job)
                     except Queue.Empty:
                        pass  
     
-    #def endApplication(self):
+    #def endApplication(self,widget):
         #self.running=False
 
 plop=ThreadedClient()
