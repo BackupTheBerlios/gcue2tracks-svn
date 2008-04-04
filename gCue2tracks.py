@@ -49,7 +49,7 @@ class GuiPart:
 		dic = {"on_mainWindow_destroy" : self.endApplication
 				, "onf" : self.onf, "start_recomp" : self.start_recomp
 				,"bsave" : self.bsave,"stop" : self.stop,"codec_changed" : self.codec_changed
-				,"bitratebtn" : bitratebtn,"qualitybtn" : qualitybtn}
+				,"bitratebtn" : bitratebtn,"qualitybtn" : qualitybtn,"on_about1_activate" : self.on_about_activate}
 		GuiPart.wTree.signal_autoconnect(dic)
 		bitrait = GuiPart.wTree.get_widget("bitrate")
 		store = gtk.ListStore(str)
@@ -61,6 +61,15 @@ class GuiPart:
 		bitrait.set_text_column(0)
 		bitrait.set_active(0)
 		
+	def on_about_activate( self,widget):
+			Tree = gtk.glade.XML("gCue2tracks.glade", "aboutdialog1")
+			text = open('COPYING').read()
+			Tree.get_widget("aboutdialog1").set_license(text)
+			for button in Tree.get_widget("aboutdialog1").action_area.get_children():
+				if button.get_property('label') == gtk.STOCK_CLOSE:
+					button.connect('clicked', lambda x:Tree.get_widget("aboutdialog1").destroy())
+			Tree.get_widget("aboutdialog1").run()
+			 
 	def codec_changed(self, widget):
 		codecn = GuiPart.wTree.get_widget("codec").get_active()
 		if codecn in [0,1]:
@@ -73,7 +82,7 @@ class GuiPart:
 			GuiPart.wTree.get_widget("hbox2").set_sensitive(False)
 
 	def onf(self, widget):
-		dialog = gtk.FileChooserDialog("Open..",
+		dialog = gtk.FileChooserDialog("Open",
                        None,
                        gtk.FILE_CHOOSER_ACTION_OPEN,
                        (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,
@@ -112,9 +121,13 @@ class GuiPart:
 		
 										
 	def start_recomp(self, widget):
+		GuiPart.wTree.get_widget("stop_button").set_sensitive(True)
 		fileselect= ' "' + GuiPart.wTree.get_widget("filename").get_text() + '"'  ## filename
 		folder = ' -o "' + GuiPart.wTree.get_widget("savefolder").get_text()      ## folder to save
-		level = ' -l best'
+		if GuiPart.wTree.get_widget("best").get_active():
+			level = ' -l best'
+		else:
+			level = ' -l fast'
 		codec = GuiPart.wTree.get_widget("codec").get_active_text()
 		if codec in ['ogg','mp3']:
 			self.getvar()
@@ -140,12 +153,15 @@ class GuiPart:
 			self.bitrate =self.mode =''
 
 	def goButton_clicked(self,widget):
+		GuiPart.wTree.get_widget("start").set_sensitive(False)
 		id=self.jobCounter
 		self.jobCounter+=1
 		job=aJob(id,'11')
 		self.qIn.put(job)
 		
 	def stop(self,widget):
+		GuiPart.wTree.get_widget("stop_button").set_sensitive(False)
+		GuiPart.wTree.get_widget("start").set_sensitive(True)
 		ThreadedClient.a=0
 		popen2.Popen3('killall -Iq cue2tracks')
 		return
@@ -172,7 +188,7 @@ class ThreadedClient:
         self.running=False
         
     def processIncoming(self):
-
+		
         GuiPart.textview = GuiPart.wTree.get_widget("textview1")
         GuiPart.textbuffer=GuiPart.textview.get_buffer()
         while self.running:
@@ -183,9 +199,9 @@ class ThreadedClient:
                         self.gui.currentJobId=job.id
                         threading.Thread(target=puls).start()
                         proc1 = popen2.Popen4(GuiPart.a)
-                        gtk.gdk.threads_enter()
-                        fromchild = proc1.fromchild.readline()
-                        gtk.gdk.threads_leave()
+                        #gtk.gdk.threads_enter()
+                        #fromchild = proc1.fromchild.readline()
+                        #gtk.gdk.threads_leave()
                         while proc1.poll()==-1:
                             fromchild = proc1.fromchild.readline()
                             a=string.find(fromchild,'%')
