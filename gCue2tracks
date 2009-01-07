@@ -1,0 +1,7 @@
+#!/usr/bin/python
+#-*- coding: utf8 -*-
+import sys
+
+sys.path.append('/usr/share/gcue2tracks')
+execfile('/usr/share/gcue2tracks/gCue2tracks.py')
+
