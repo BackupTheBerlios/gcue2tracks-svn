@@ -1,0 +1,547 @@
+# translation of gCue2tracks.
+# Copyright (C) 2008 THE gCue2tracks'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the gCue2tracks package.
+# <>, 2008.
+# , fuzzy
+#
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gCue2tracks VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-01-03 20:40+0300\n"
+"PO-Revision-Date: 2008-12-22 22:26+0100\n"
+"Last-Translator:  <>\n"
+"Language-Team:  <es@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=\n"
+"Content-Transfer-Encoding: \n"
+
+#: ../gCue2tracks.py:204 ../gCue2tracks.py:586 ../gCue2tracks.py:634
+#, python-format
+msgid ""
+"Bin file not found\n"
+"<b>%s</b>"
+msgstr ""
+
+#: ../gCue2tracks.py:418
+msgid "Track light"
+msgstr "Track light"
+
+#: ../gCue2tracks.py:419
+msgid "Track name"
+msgstr "Nombre de la pista"
+
+#: ../gCue2tracks.py:432
+msgid "Wrong filename"
+msgstr "Nombre de archivo incorrecto"
+
+#: ../gCue2tracks.py:469
+msgid "THANKS:"
+msgstr "GRACIAS:"
+
+#: ../gCue2tracks.py:490
+msgid "not installed"
+msgstr ""
+
+#: ../gCue2tracks.py:539
+msgid "Select folder"
+msgstr ""
+
+#: ../gCue2tracks.py:556
+msgid "Open"
+msgstr "Abrir"
+
+#: ../gCue2tracks.py:570
+msgid "All files"
+msgstr "Todos los archivos"
+
+#: ../gCue2tracks.py:663
+msgid "Bad codepage"
+msgstr "codepage incorrecto"
+
+#: ../gCue2tracks.py:826 ../gCue2tracks.py:830 ../decoder.py:318
+#: ../decoder.py:492 ../decoder.py:519 ../decoder.py:556 ../decoder.py:579
+#: ../decoder.py:580 ../decoder.py:603 ../decoder.py:728
+msgid "Interrupted"
+msgstr "Interrumpido"
+
+#: ../gCue2tracks.py:887 ../decoder.py:582
+msgid "Error"
+msgstr "Error"
+
+#: ../gCue2tracks.py:892
+msgid "Complete"
+msgstr "Completado"
+
+#: ../gCue2tracks.glade.h:2
+#, no-c-format
+msgid "/%P/%D - %A/%t"
+msgstr "/%P/%D·-·%A/%t"
+
+#: ../gCue2tracks.glade.h:3
+msgid "<b>Algoritm</b>"
+msgstr "<b>Algoritmo</b>"
+
+#: ../gCue2tracks.glade.h:4
+#, fuzzy
+msgid "<b>Filenames</b>"
+msgstr "<b>archivo</b>"
+
+#: ../gCue2tracks.glade.h:5
+msgid "<b>Paths</b>"
+msgstr "<b>Rutas</b>"
+
+#: ../gCue2tracks.glade.h:6
+#, fuzzy
+msgid "<b>Queue</b>"
+msgstr "<b>archivo</b>"
+
+#: ../gCue2tracks.glade.h:7
+msgid "<b>codec</b>"
+msgstr "<b>codec</b>"
+
+#: ../gCue2tracks.glade.h:8
+msgid "<b>file</b>"
+msgstr "<b>archivo</b>"
+
+#: ../gCue2tracks.glade.h:9
+msgid "<b>log</b>"
+msgstr "<b>log</b>"
+
+#: ../gCue2tracks.glade.h:10
+msgid "<b>tagging</b>"
+msgstr "<b>etiquetado</b>"
+
+#: ../gCue2tracks.glade.h:11
+msgid "About gCue2tracks"
+msgstr "Sobre gCue2tracks"
+
+#: ../gCue2tracks.glade.h:12
+msgid "Begin the search cue file from here:"
+msgstr "Empezar la búsqueda de archivos cue aquí:"
+
+#: ../gCue2tracks.glade.h:13
+msgid "Bitrate"
+msgstr "Bitrate"
+
+#: ../gCue2tracks.glade.h:14
+msgid "Codecs"
+msgstr "Codecs"
+
+#: ../gCue2tracks.glade.h:15
+msgid "Convert mp3 tag to UTF-8. Requires python-mutagen"
+msgstr "Covertir etiqueta mp3 a UTF-8. Requiere python-mutagen"
+
+#: ../gCue2tracks.glade.h:16
+msgid "Convert to UTF-8 from this codepage..."
+msgstr "Convertir a UTF-8 a partir de este código"
+
+#: ../gCue2tracks.glade.h:17
+msgid "Disable taging output files with cue info."
+msgstr "Deshabilitar etiquetado para los ficheros de salida que posean información cue"
+
+#: ../gCue2tracks.glade.h:18
+msgid "Free Lossless Audio Codec"
+msgstr "Codec de audio libre sin perdida"
+
+#: ../gCue2tracks.glade.h:19
+msgid "General"
+msgstr "General"
+
+#: ../gCue2tracks.glade.h:20
+msgid "MPEG Audio Layer III (MP3)"
+msgstr "MPEG·Audio·Layer·III·(MP3)"
+
+#: ../gCue2tracks.glade.h:21
+msgid "Mode:"
+msgstr "Modo:"
+
+#: ../gCue2tracks.glade.h:22
+msgid "Monkey's Audio"
+msgstr "Monkey's·Audio"
+
+#: ../gCue2tracks.glade.h:23
+msgid "Ogg Vorbis"
+msgstr "Ogg·Vorbis"
+
+#: ../gCue2tracks.glade.h:24
+msgid "Open a dialog to select a cue file in this folder"
+msgstr "Abrir para seleccionar un archivo cue en esta carpeta"
+
+#: ../gCue2tracks.glade.h:25
+msgid "Preferences"
+msgstr "Preferencias"
+
+#: ../gCue2tracks.glade.h:26
+msgid "Quality"
+msgstr "Calidad"
+
+#: ../gCue2tracks.glade.h:27
+msgid "S_how log"
+msgstr "S_how·log"
+
+#: ../gCue2tracks.glade.h:28
+msgid "Save"
+msgstr "Guardar"
+
+#: ../gCue2tracks.glade.h:29
+msgid ""
+"Set level of output codec compression rate.\n"
+"Levels may be:\n"
+"\t'best' or 0 : Best for store (default),\n"
+"\t'fast' or 1 : Fastest processing,\n"
+"\t'mid'  or 2 : Fairly good for portable hardware"
+msgstr ""
+"Selecione el nivel de compresión del codec.\n"
+"Los niveles pueden ser:\n"
+"\t'optimo' o 0 : El mejor para almacenar (nivel por defecto),\n"
+"\t'rápido' o 1 : Proceso más rápido,\n"
+"\t'medio' o 2 : Bastante bueno adecuado para dispositivos portátiles"
+
+#: ../gCue2tracks.glade.h:34
+msgid "Set naming scheme for output file names."
+msgstr "Seleccione el esquema de etiquetado para los archivos resultantes"
+
+#: ../gCue2tracks.glade.h:36
+#, no-c-format
+msgid ""
+"Set naming scheme for output file names.\n"
+"\n"
+"Naming scheme is:\n"
+"  %A - Album title\n"
+"  %P - Album performer\n"
+"  %D - Album date\n"
+"  %G - Album genre\n"
+"  %t - Track title\n"
+"  %p - Track performer\n"
+"  %g - Track genre\n"
+"  %n - Track number\n"
+"  %N - Track number with leading zero"
+msgstr ""
+"Seleccione el esquema de etiquetado para los archivos resultantes.\n"
+"\n"
+"Esquema de etiquetado:\n"
+"  %A - Título del albúm\n"
+"..%P - Artista del albúm\n"
+"  %P - Año\n"
+"  %G - Género\n"
+"  %t - Título de la pista\n"
+"  %p - Intérprete de la pista\n"
+"  %g - Género de la pista\n"
+"  %n - Número de pista\n"
+"  %N - Número de pista con cero inicial"
+
+#: ../gCue2tracks.glade.h:48
+msgid "Set quality of codec compression"
+msgstr "Elíja la calidad de compresión del codec"
+
+#: ../gCue2tracks.glade.h:49
+msgid "Temporary files"
+msgstr "Archivos temporales"
+
+#: ../gCue2tracks.glade.h:50
+msgid "Test"
+msgstr "Probar"
+
+#: ../gCue2tracks.glade.h:51
+msgid "VBR"
+msgstr "VBR"
+
+#: ../gCue2tracks.glade.h:52
+msgid "Variable compression bitrate"
+msgstr "Tasa de compresion variable"
+
+#: ../gCue2tracks.glade.h:53
+#, fuzzy
+msgid "WavPack decoder"
+msgstr "WavPack"
+
+#: ../gCue2tracks.glade.h:54
+#, fuzzy
+msgid "WavPack encoder"
+msgstr "WavPack"
+
+#: ../gCue2tracks.glade.h:55
+msgid ""
+"You need about 1,5 Gb of free space\n"
+"for a standard audio album."
+msgstr ""
+"Necesita aproximadamente 1,5 Gb de espacio libre\n"
+"para un albúm de audio de tamaño medio"
+
+#: ../gCue2tracks.glade.h:57
+msgid "_About"
+msgstr "_Acerca de"
+
+#: ../gCue2tracks.glade.h:58
+msgid "_Edit"
+msgstr "_Editar"
+
+#: ../gCue2tracks.glade.h:59
+msgid "_File"
+msgstr "_Archivo"
+
+#: ../gCue2tracks.glade.h:60
+msgid "_Help"
+msgstr "_Ayuda"
+
+#: ../gCue2tracks.glade.h:61
+msgid "_View"
+msgstr "_Ver"
+
+#: ../gCue2tracks.glade.h:62
+msgid "album title"
+msgstr "Título del album"
+
+#: ../gCue2tracks.glade.h:63
+msgid "bin file"
+msgstr "archivo bin"
+
+#: ../gCue2tracks.glade.h:64
+msgid "composer"
+msgstr "compositor"
+
+#: ../gCue2tracks.glade.h:65
+msgid "convert cue from codepage"
+msgstr "convertir cue a partir de codepage"
+
+#: ../gCue2tracks.glade.h:66
+msgid "convert tag to UTF-8"
+msgstr "convertir etiqueta a UTF-8"
+
+#: ../gCue2tracks.glade.h:67
+msgid "copy image file(*.jpg, *.png and others) to destination folder"
+msgstr ""
+
+#: ../gCue2tracks.glade.h:68
+msgid "cp1251"
+msgstr "cp1251"
+
+#: ../gCue2tracks.glade.h:69
+msgid "cue file"
+msgstr "archivo cue"
+
+#: ../gCue2tracks.glade.h:70
+#, fuzzy
+msgid "cue2tracks"
+msgstr "gCue2tracks"
+
+#: ../gCue2tracks.glade.h:71
+msgid "date"
+msgstr "Fecha"
+
+#: ../gCue2tracks.glade.h:72
+msgid "disable tagging (only cue2tracks algoritm)"
+msgstr ""
+
+#: ../gCue2tracks.glade.h:73
+#, fuzzy
+msgid "format string "
+msgstr "formato"
+
+#: ../gCue2tracks.glade.h:74
+msgid "gCue2tracks"
+msgstr "gCue2tracks"
+
+#: ../gCue2tracks.glade.h:75
+msgid "genre"
+msgstr "género"
+
+#: ../gCue2tracks.glade.h:76
+msgid "gtk-cancel"
+msgstr "gtk-cancel"
+
+#: ../gCue2tracks.glade.h:77
+msgid "gtk-close"
+msgstr "gtk-close"
+
+#: ../gCue2tracks.glade.h:78
+msgid "gtk-convert"
+msgstr "gtk-convert"
+
+#: ../gCue2tracks.glade.h:79
+msgid "gtk-ok"
+msgstr "gtk-ok"
+
+#: ../gCue2tracks.glade.h:80
+msgid "gtk-preferences"
+msgstr "gtk-preferences"
+
+#: ../gCue2tracks.glade.h:81
+msgid "gtk-stop"
+msgstr "gtk-stop"
+
+#: ../gCue2tracks.glade.h:82
+msgid "log"
+msgstr ""
+
+#: ../gCue2tracks.glade.h:83
+msgid ""
+"ogg  : ogg vorbis\n"
+"mp3 : mpeg 1 layer 3 via lame\n"
+"flac : Free Lossless Audio Codec\n"
+"wav : no encode, raw sound wave\n"
+"flake: FLAC realisation via FFmpeg (beta)\n"
+"ape : Monkey's Audio Codec,\n"
+"wv   : WavPack,\n"
+"ofr   : OptimFrog,\n"
+"shn  : shorten"
+msgstr ""
+"ogg··:·ogg·vorbis\n"
+"mp3·:·mpeg·1·layer·3·via·lame\n"
+"flac·:·Free·Lossless·Audio·Codec\n"
+"wav·:·sin codificar\n"
+"flake:·FLAC·via·FFmpeg·(beta)\n"
+"ape·:·Monkey's·Audio·Codec,\n"
+"wv···:·WavPack,\n"
+"ofr···:·OptimFrog,\n"
+"shn··:·shorten"
+
+#: ../gCue2tracks.glade.h:92
+msgid "open cue file"
+msgstr "abrir archivo cue"
+
+#: ../gCue2tracks.glade.h:93
+msgid "parameters"
+msgstr "parámetros"
+
+#: ../gCue2tracks.glade.h:94
+msgid "performer"
+msgstr "artista"
+
+#: ../gCue2tracks.glade.h:95
+msgid "python"
+msgstr ""
+
+#: ../gCue2tracks.glade.h:96
+msgid "recursive search of cue"
+msgstr ""
+
+#: ../gCue2tracks.glade.h:97
+msgid "replace symbols(?\\*:><\"|) in filename"
+msgstr ""
+
+#: ../gCue2tracks.glade.h:98
+msgid "same folder as input file"
+msgstr "misma carpeta que el archivo original"
+
+#: ../gCue2tracks.glade.h:99
+msgid "save to"
+msgstr "guardar en"
+
+#: ../gCue2tracks.glade.h:100
+msgid "translator-credits"
+msgstr "Traductor"
+
+#: ../gCue2tracks.glade.h:101
+msgid "use bitrate and quality"
+msgstr ""
+
+#: ../decoder.py:87
+msgid "mid3v2 (from python-mutagen) is not found"
+msgstr "no se encuentra mid3v2·(de·python-mutagen)"
+
+#: ../decoder.py:196
+#, python-format
+msgid ""
+"Format <b>%s</b>\n"
+"don't supported "
+msgstr ""
+
+#: ../decoder.py:227
+#, python-format
+msgid ""
+"Codec\n"
+" <b>%s</b>\n"
+"missing"
+msgstr ""
+
+#: ../decoder.py:238
+#, python-format
+msgid ""
+"File \n"
+"<b>%s</b>\n"
+"not found"
+msgstr ""
+
+#: ../decoder.py:247
+#, python-format
+msgid ""
+"Temp dir \n"
+"<b>%s</b>\n"
+"not found"
+msgstr ""
+
+#: ../decoder.py:296
+#, fuzzy, python-format
+msgid "Decoding to wav \"%s\" (%d/%s) "
+msgstr "Codificación \"%s\"·(%s/%s)··"
+
+#: ../decoder.py:315
+msgid "Decoding to wav "
+msgstr "Decodificando a wav"
+
+#: ../decoder.py:331
+msgid "split tracks  "
+msgstr "dividir pistas  "
+
+#: ../decoder.py:511
+#, python-format
+msgid "Encoding \"%s\" (%s/%s)  "
+msgstr "Codificación \"%s\"·(%s/%s)··"
+
+#. 'python-mutagen'
+#: ../decoder.py:613
+#, fuzzy
+msgid "Convert tag to UTF-8"
+msgstr "convertir etiqueta a UTF-8"
+
+#: ../decoder.py:641
+msgid "Create folder"
+msgstr ""
+
+#: ../decoder.py:679
+#, python-format
+msgid "Taging and copy %s"
+msgstr ""
+
+#~ msgid ""
+#~ "best\n"
+#~ "mid\n"
+#~ "fast"
+#~ msgstr ""
+#~ "optimo\n"
+#~ "medio\n"
+#~ "rápido"
+
+#~ msgid " "
+#~ msgstr "·"
+
+#~ msgid "  "
+#~ msgstr "··"
+
+#~ msgid "                       "
+#~ msgstr "·······················"
+
+#~ msgid "4"
+#~ msgstr "4"
+
+#~ msgid ""
+#~ "Convert mp3 tag to UTF-8.\n"
+#~ "Requires python-mutagen"
+#~ msgstr ""
+#~ "Convertir etiqueta mp3 a UTF-8 \n"
+#~ "Requiere python-mutagen"
+
+#~ msgid "Use cue2tracks.sh"
+#~ msgstr "Use·cue2tracks.sh"
+
+#~ msgid "disable tagging"
+#~ msgstr "deshabilitar etiquetado"
+
+#~ msgid "page 3"
+#~ msgstr "página 3"
+
+#~ msgid "tracks"
+#~ msgstr "pistas"
